@@ -1,10 +1,10 @@
-export const spiralCoordinates = finyl => {
+export const spiralCoordinates = final => {
   const result = [];
   let x = 0;
   let y = 0;
   let k = 0;
 
-  while (k < finyl) {
+  while (k < final) {
     result.push([x, y]);
 
     k += 1;
