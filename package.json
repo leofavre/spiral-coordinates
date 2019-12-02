@@ -1,7 +1,7 @@
 {
-  "name": "template-repo",
+  "name": "spiral-coordinates",
   "version": "0.1.0",
-  "description": "Template Repository",
+  "description": "Spiral Coordinates",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

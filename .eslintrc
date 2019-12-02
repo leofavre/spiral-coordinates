@@ -1,8 +1,7 @@
 {
+  "parser": "babel-eslint",
   "extends": [
-    "semistandard",
-    "plugin:import/errors",
-    "plugin:import/warnings"
+    "semistandard"
   ],
   "env": {
     "browser": true,
@@ -13,25 +12,19 @@
       "code": 80,
       "ignorePattern": "^(import|export)\\s.+\\sfrom\\s.+;$",
       "ignoreUrls": true,
-      "ignoreTemplateLiterals": true
-    }],
-    "import/no-unresolved": "off"
+      "ignoreTemplateLiterals": true,
+      "ignoreRegExpLiterals": true
+    }]
   },
   "globals": {
     "describe": true,
     "it": true,
     "should": true,
-    "expect": true,
-    "sinon": true,
-    "before": true,
-    "after": true,
     "beforeEach": true,
-    "afterEach": true,
-    "fixture": true,
-    "test": true
+    "afterEach": true
   },
   "overrides": [{
-    "files": "*.spec.js",
+    "files": "*.{test,spec}.js",
     "rules": {
       "no-unused-expressions": "off"
     }
