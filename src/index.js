@@ -1,36 +1,34 @@
-export const spiralCoordinates = final => {
-  const result = [];
-  let x = 0;
-  let y = 0;
-  let k = 0;
+import { spiralCoordinates } from './helpers/spiralCoordinates.js';
+import { drawRotatedRect } from './helpers/drawRotatedRect.js';
 
-  while (k < final) {
-    result.push([x, y]);
+const centerPointWidth = 60;
+const centerPointHeight = 60;
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
 
-    k += 1;
-    y = -k;
-    x = -k + 1;
+const redrawCanvas = () => {
+  canvas.width = window.innerWidth * 2;
+  canvas.height = window.innerHeight * 2;
 
-    while (x < k) {
-      result.push([x, y]);
-      x += 1;
-    }
+  ctx.fillStyle = 'rgb(0, 0, 0)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    while (y < k) {
-      result.push([x, y]);
-      y += 1;
-    }
+  spiralCoordinates(40).forEach(([x, y]) => {
+    const lineWidth = 45;
+    const lineHeight = 45;
 
-    while (x > -k) {
-      result.push([x, y]);
-      x -= 1;
-    }
-
-    while (y > -k) {
-      result.push([x, y]);
-      y -= 1;
-    }
-  }
-
-  return result;
+    drawRotatedRect(
+      ctx,
+      (canvas.width / 2) + (centerPointWidth * x) - (lineWidth / 2),
+      (canvas.height / 2) + (centerPointHeight * y) - (lineHeight / 2),
+      lineWidth,
+      lineHeight,
+      15,
+      'rgba(65, 65, 65, 1)'
+    );
+  });
 };
+
+window.addEventListener('resize', redrawCanvas);
+
+redrawCanvas();
